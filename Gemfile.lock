@@ -3,9 +3,11 @@ GEM
   specs:
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.0.2)
+    haml (4.0.7)
+      tilt
     http-cookie (1.0.2)
       domain_name (~> 0.5)
-    json (1.8.3)
     mime-types (2.6.2)
     netrc (0.7.9)
     rack (1.6.4)
@@ -30,10 +32,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  json
+  dotenv
+  haml
   rest-client
   rest_client
   sinatra
-
-BUNDLED WITH
-   1.10.6
