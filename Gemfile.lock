@@ -8,6 +8,7 @@ GEM
       tilt
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    json (1.8.2)
     mime-types (2.6.2)
     netrc (0.7.9)
     rack (1.6.4)
@@ -17,8 +18,6 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    rest_client (1.8.3)
-      netrc (~> 0.7.7)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -34,6 +33,9 @@ PLATFORMS
 DEPENDENCIES
   dotenv
   haml
+  json
   rest-client
-  rest_client
   sinatra
+
+BUNDLED WITH
+   1.10.6
