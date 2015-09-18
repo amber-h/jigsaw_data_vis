@@ -26,14 +26,14 @@ end
 def get_people_by_role role, pages
 	jigsaw_people = []
 	for page in 1..pages.to_i
-		jigsaw_people << parse_json_to_thoughtworker(JSON.parse(@jigsaw["people?role=#{role}&page=#{page}"].get))
+		jigsaw_people << parse_json_to_thoughtworker(@jigsaw["people?role=#{role}&page=#{page}"].get)
 	end
 
 	jigsaw_people
 end
 
-def parse_json_to_thoughtworker json_data
-	json_data.map { |d| ThoughtWorker.new(d['employeeId'], d['gender'], d['role'], d['grade'], d['twExperience'], d['homeOffice'], d['workingOffice'])}
+def parse_json_to_thoughtworker data
+	JSON.parse(data).map { |d| ThoughtWorker.new(d['employeeId'], d['gender'], d['role'], d['grade'], d['twExperience'], d['homeOffice'], d['workingOffice'])}
 end
 
 
