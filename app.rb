@@ -5,7 +5,7 @@ require 'dotenv'
 require 'json'
 require_relative 'models/thoughtworker'
 
-JIGSAW_URL='https://jigsaw.thoughtworks.com/api'
+JIGSAW_URL = 'https://jigsaw.thoughtworks.com/api'
 
 def initialize
   Dotenv.load
@@ -13,7 +13,7 @@ def initialize
 end
 
 get '/' do
-   @jigsaw_people = get_people_by_role "dev", "40"
+   @jigsaw_people = get_people_by_role "dev", "2"
    haml :index, :format => :html5
 end
 
