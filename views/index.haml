@@ -3,6 +3,6 @@
     %title Hello World!
   %body
     %h1 Basic Sinatra App!
-    %p Hello!
     %h2 Jigsaw People Data
-    %p #{@jigsaw_people}
+    - @jigsaw_people.each do |person|
+      %p #{person.employeeId}
