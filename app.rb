@@ -35,11 +35,9 @@ def get_people_by_role role, pages
 end
 
 def parse_json_to_thoughtworker data
-	thoughtworker_array = JSON.parse(data)
 	thoughtworkers = Array.new
-	thoughtworker_array.each do |d|
+	JSON.parse(data).each do |d|
 		thoughtworker = ThoughtWorker.new(d["employeeId"], d["gender"], d["role"], d["grade"], d["twExperience"], d["homeOffice"], d["workingOffice"])
-
 		thoughtworkers << thoughtworker
 	end
 
