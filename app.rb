@@ -13,7 +13,7 @@ def initialize
 end
 
 get '/' do
-   @jigsaw_people = get_people_by_role "dev", "2"
+   @thoughtworkers = get_people_by_role "dev", "2"
    haml :index, :format => :html5
 end
 
@@ -24,14 +24,14 @@ def get_jigsaw_resource
 end
 
 def get_people_by_role role, pages
-	jigsaw_people = Array.new
+	thoughtworkers = Array.new
 	for page in 1..pages.to_i
 		jigsaw_json = @jigsaw["people?role=#{role}&page=#{page}"].get
 		thoughtworker_array = parse_json_to_thoughtworker(jigsaw_json)
-		(jigsaw_people << thoughtworker_array).flatten!
+		(thoughtworkers << thoughtworker_array).flatten!
 	end
 
-	jigsaw_people
+	thoughtworkers
 end
 
 def parse_json_to_thoughtworker data

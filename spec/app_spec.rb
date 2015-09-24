@@ -4,21 +4,30 @@ require_relative '../app'
 
 describe 'App' do 
 
+	JIGSAW_URL = "https://jigsaw.thoughtworks.com/api/people"
+
 	describe '#get_people_by_role' do
 		before(:all) do
-   			RestClient = double
-
-      		response = double
-      		response.stub(:code) { 200 }
-      		response.stub(:body) { "" }
-      		response.stub(:headers) { {} }
-      		RestClient.stub(:get) { response }  
+      		 Dotenv.load
+           @jigsaw_response_body = File.read(File.join("spec", "jigsaw_response", "one_person_role_dev.json"))
 		end
 
-		context 'there are no devs and we search by role dev' do
-			expected_result = Array.new
-			jigsaw_people = get_people_by_role "dev", "1"
-			expect(jigsaw_people.to eq(expected_result))
+		context 'returning ThoughtWorkers by role' do
+			it 'should return 1 dev when search by role=dev' do
+				stub_jigsaw_request @jigsaw_response_body
+
+				actualResponse = get_people_by_role "Dev", "1"
+
+			  expect(actualResponse[0].employeeId).to eq("15722") 
+        expect(actualResponse[0].gender).to eq("Male") 
+        expect(actualResponse[0].role).to eq({"name" => "Dev"}) 
+      end
+
+      def stub_jigsaw_request response_body
+        stub_request(:get, "https://jigsaw.thoughtworks.com/api/people/people?page=1&role=Dev").
+        with(:headers => {'Authorization'=> ENV['JIGSAW_API_TOKEN']}).
+        to_return(:status => 200, :body => response_body, :headers => {})
+      end
 		end
 	end
 	

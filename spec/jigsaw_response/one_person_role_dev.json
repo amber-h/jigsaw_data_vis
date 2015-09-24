@@ -1,0 +1,37 @@
+[
+  {
+    "employeeId": "15722",
+    "loginName": "aedwards",
+    "preferredName": "Aaron Edwards",
+    "gender": "Male",
+    "picture": {
+      "url": "https://jigsaw.thoughtworks.com/consultants/22329/show_picture?style=profile"
+    },
+    "role": {
+      "name": "Dev"
+    },
+    "grade": {
+      "name": "Con"
+    },
+    "department": {
+      "name": "Professional Services"
+    },
+    "hireDate": "2013-10-08",
+    "totalExperience": 1.96,
+    "twExperience": 1.96,
+    "assignable": true,
+    "homeOffice": {
+      "name": "Melbourne"
+    },
+    "workingOffice": {
+      "name": "Melbourne"
+    },
+    "projectPreferences": "I am quite keen to try and learn anything  new on projects be it technical, domain knowledge or any other skills.",
+    "longTermGoal": "",
+    "travelPreferences": {
+      "domestic": true,
+      "international": true,
+      "travelDetails": "International travel is something I would be very interested in having the opportunity to do"
+    }
+  }
+]
