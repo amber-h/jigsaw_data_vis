@@ -7,28 +7,41 @@ describe 'App' do
 	JIGSAW_URL = "https://jigsaw.thoughtworks.com/api/people"
 
 	describe '#get_people_by_role' do
-		before(:all) do
-      		 Dotenv.load
-           @jigsaw_response_body = File.read(File.join("spec", "jigsaw_response", "one_person_role_dev.json"))
+		before(:each) do
+      		Dotenv.load
+          @response_one_dev = json_file("one_person_role_dev.json")
+          @response_two_dev = json_file("two_people_role_dev.json")
 		end
 
 		context 'returning ThoughtWorkers by role' do
-			it 'should return 1 dev when search by role=dev' do
-				stub_jigsaw_request @jigsaw_response_body
+			it 'should return 1 thoughtworker when search by role=dev' do
+				stub_jigsaw_request @response_one_dev
 
 				actualResponse = get_people_by_role "Dev", "1"
 
-			  expect(actualResponse[0].employeeId).to eq("15722") 
-        expect(actualResponse[0].gender).to eq("Male") 
-        expect(actualResponse[0].role).to eq({"name" => "Dev"}) 
+        expect(actualResponse[0]) == (ThoughtWorker.new("15722", "Male", {"name" => "Dev"}, {"name"=> "Con"}, 1.96, {"name"=> "Melbourne"}, {"name"=> "Melbourne"}))
       end
 
-      def stub_jigsaw_request response_body
-        stub_request(:get, "https://jigsaw.thoughtworks.com/api/people/people?page=1&role=Dev").
-        with(:headers => {'Authorization'=> ENV['JIGSAW_API_TOKEN']}).
-        to_return(:status => 200, :body => response_body, :headers => {})
+      it 'should return 2 thoughtworkers when search by role=dev' do
+        stub_jigsaw_request @response_two_dev
+
+        actualResponse = get_people_by_role "Dev", "1"
+
+        expect(actualResponse.length).to eq(2)
+        expect(actualResponse[0]) == (ThoughtWorker.new("15722", "Male", {"name" => "Dev"}, {"name"=> "Con"}, 1.96, {"name"=> "Melbourne"}, {"name"=> "Melbourne"}))
+        expect(actualResponse[1]) == (ThoughtWorker.new("17813", "Male", {"name" => "Dev"}, {"name"=> "Intern"}, 0.24, {"name"=> "Bangalore"}, {"name"=> "Bangalore"}))
       end
 		end
 	end
+
+  def json_file filename
+      File.read(File.join("spec", "jigsaw_response", filename))
+  end
+
+  def stub_jigsaw_request response_body
+    stub_request(:get, "https://jigsaw.thoughtworks.com/api/people/people?page=1&role=Dev").
+    with(:headers => {'Authorization'=> ENV['JIGSAW_API_TOKEN']}).
+    to_return(:status => 200, :body => response_body, :headers => {})
+  end
 	
 end

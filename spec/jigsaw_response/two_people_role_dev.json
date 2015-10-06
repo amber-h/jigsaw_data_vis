@@ -1,0 +1,72 @@
+[
+  {
+    "employeeId": "15722",
+    "loginName": "aedwards",
+    "preferredName": "Aaron Edwards",
+    "gender": "Male",
+    "picture": {
+      "url": "https://jigsaw.thoughtworks.com/consultants/22329/show_picture?style=profile"
+    },
+    "role": {
+      "name": "Dev"
+    },
+    "grade": {
+      "name": "Con"
+    },
+    "department": {
+      "name": "Professional Services"
+    },
+    "hireDate": "2013-10-08",
+    "totalExperience": 1.96,
+    "twExperience": 1.96,
+    "assignable": true,
+    "homeOffice": {
+      "name": "Melbourne"
+    },
+    "workingOffice": {
+      "name": "Melbourne"
+    },
+    "projectPreferences": "I am quite keen to try and learn anything  new on projects be it technical, domain knowledge or any other skills.",
+    "longTermGoal": "",
+    "travelPreferences": {
+      "domestic": true,
+      "international": true,
+      "travelDetails": "International travel is something I would be very interested in having the opportunity to do"
+    }
+  },
+  {
+    "employeeId": "17813",
+    "loginName": "akshayks",
+    "preferredName": "Akshay Kumar Sharma",
+    "gender": "Male",
+    "picture": {
+      "url": "https://jigsaw.thoughtworks.com/consultants/25316/show_picture?style=profile"
+    },
+    "role": {
+      "name": "Dev"
+    },
+    "grade": {
+      "name": "Intern"
+    },
+    "department": {
+      "name": "Professional Services"
+    },
+    "hireDate": "2015-07-01",
+    "totalExperience": 0.24,
+    "twExperience": 0.24,
+    "assignable": true,
+    "homeOffice": {
+      "name": "Bangalore"
+    },
+    "workingOffice": {
+      "name": "Bangalore"
+    },
+    "projectPreferences": "",
+    "longTermGoal": "",
+    "travelPreferences": {
+      "domestic": false,
+      "international": false,
+      "travelDetails": ""
+    }
+  }
+]
