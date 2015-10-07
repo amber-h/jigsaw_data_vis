@@ -19,7 +19,7 @@ describe 'App' do
 
 				actualResponse = get_people_by_role "Dev", "1"
 
-        expect(actualResponse[0]) == (ThoughtWorker.new("15722", "Male", {"name" => "Dev"}, {"name"=> "Con"}, 1.96, {"name"=> "Melbourne"}, {"name"=> "Melbourne"}))
+        expectEqual actualResponse[0], ThoughtWorker.new("15733", "Male", {"name" => "Dev"}, {"name"=> "Con"}, 1.96, {}, {})
       end
 
       it 'should return 2 thoughtworkers when search by role=dev' do
@@ -28,11 +28,18 @@ describe 'App' do
         actualResponse = get_people_by_role "Dev", "1"
 
         expect(actualResponse.length).to eq(2)
-        expect(actualResponse[0]) == (ThoughtWorker.new("15722", "Male", {"name" => "Dev"}, {"name"=> "Con"}, 1.96, {"name"=> "Melbourne"}, {"name"=> "Melbourne"}))
-        expect(actualResponse[1]) == (ThoughtWorker.new("17813", "Male", {"name" => "Dev"}, {"name"=> "Intern"}, 0.24, {"name"=> "Bangalore"}, {"name"=> "Bangalore"}))
+        expectEqual actualResponse[0], ThoughtWorker.new("33333", "Female", {"name" => "Dev"}, {"name"=> "Con"}, 1.96, {"name"=> "Melbourne"}, {"name"=> "Melbourne"})
+        expectEqual actualResponse[1], ThoughtWorker.new("17813", "Male", {"name" => "Dev"}, {"name"=> "Intern"}, 0.24, {"name"=> "Bangalore"}, {"name"=> "Bangalore"})
       end
 		end
 	end
+
+  def expectEqual response, thoughtworker
+        expect(response.employeeId).to eq(thoughtworker.employeeId)
+        expect(response.gender).to eq(thoughtworker.gender)
+        expect(response.role).to eq(thoughtworker.role)
+        expect(response.grade).to eq(thoughtworker.grade)
+  end
 
   def json_file filename
       File.read(File.join("spec", "jigsaw_response", filename))

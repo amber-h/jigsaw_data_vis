@@ -1,8 +1,8 @@
 [
   {
-    "employeeId": "15722",
-    "loginName": "aedwards",
-    "preferredName": "Aaron Edwards",
+    "employeeId": "15733",
+    "loginName": "jsmith",
+    "preferredName": "John Smith",
     "gender": "Male",
     "picture": {
       "url": "https://jigsaw.thoughtworks.com/consultants/22329/show_picture?style=profile"
@@ -26,12 +26,12 @@
     "workingOffice": {
       "name": "Melbourne"
     },
-    "projectPreferences": "I am quite keen to try and learn anything  new on projects be it technical, domain knowledge or any other skills.",
+    "projectPreferences": "some goals",
     "longTermGoal": "",
     "travelPreferences": {
       "domestic": true,
       "international": true,
-      "travelDetails": "International travel is something I would be very interested in having the opportunity to do"
+      "travelDetails": "International travel"
     }
   }
 ]
