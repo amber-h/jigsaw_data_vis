@@ -11,4 +11,5 @@ gem 'json'
 group :test do 
 	gem 'rspec', '~> 3.3.0'
 	gem 'webmock', '~> 1.21.0'
+	gem 'rake'
 end
