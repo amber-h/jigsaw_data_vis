@@ -1,6 +1,7 @@
 require 'rest-client'
 require 'dotenv'
 require 'json'
+require_relative 'thoughtworker'
 
 class Jigsaw
 
@@ -9,10 +10,6 @@ class Jigsaw
 	def initialize
 		Dotenv.load
   		@jigsaw = get_jigsaw_resource 
-	end
-
-	def get_jigsaw_resource
-   		RestClient::Resource.new(JIGSAW_URL, :headers => {:Authorization => ENV['JIGSAW_API_TOKEN']})
 	end
 
 	def get_people_by_role role, pages
@@ -24,6 +21,12 @@ class Jigsaw
 		end
 
 		thoughtworkers
+	end
+
+	private 
+
+	def get_jigsaw_resource
+   		RestClient::Resource.new(JIGSAW_URL, :headers => {:Authorization => ENV['JIGSAW_API_TOKEN']})
 	end
 
 	def parse_json_to_thoughtworker data

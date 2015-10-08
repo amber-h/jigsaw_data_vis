@@ -1,7 +1,5 @@
 require 'spec_helper'
 require 'dotenv'
-require_relative '../models/thoughtworker'
-require_relative '../models/jigsaw_manager'
 
 describe 'Jigsaw' do
 
