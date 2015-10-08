@@ -1,2 +1,6 @@
 FROM ruby:2.2.3-onbuild
-CMD ["ruby app.rb"]
+
+EXPOSE 4567
+
+ENTRYPOINT ["ruby"]
+CMD ["app.rb"]

@@ -1,14 +1,15 @@
 require 'spec_helper'
+require 'dotenv'
 require_relative '../models/thoughtworker'
-require_relative '../app'
+require_relative '../models/jigsaw_manager'
 
-describe 'App' do 
-
-	JIGSAW_URL = "https://jigsaw.thoughtworks.com/api/people"
+describe 'Jigsaw' do
 
 	describe '#get_people_by_role' do
 		before(:each) do
       		Dotenv.load
+
+          @jigsaw = Jigsaw.new
           @response_one_dev = json_file("one_person_role_dev.json")
           @response_two_dev = json_file("two_people_role_dev.json")
 		end
@@ -17,7 +18,7 @@ describe 'App' do
 			it 'should return 1 thoughtworker when search by role=dev' do
 				stub_jigsaw_request @response_one_dev
 
-				actualResponse = get_people_by_role "Dev", "1"
+				actualResponse = @jigsaw.get_people_by_role "Dev", "1"
 
         expectEqual actualResponse[0], ThoughtWorker.new("15733", "Male", {"name" => "Dev"}, {"name"=> "Con"}, 1.96, {}, {})
       end
@@ -25,7 +26,7 @@ describe 'App' do
       it 'should return 2 thoughtworkers when search by role=dev' do
         stub_jigsaw_request @response_two_dev
 
-        actualResponse = get_people_by_role "Dev", "1"
+        actualResponse = @jigsaw.get_people_by_role "Dev", "1"
 
         expect(actualResponse.length).to eq(2)
         expectEqual actualResponse[0], ThoughtWorker.new("33333", "Female", {"name" => "Dev"}, {"name"=> "Con"}, 1.96, {"name"=> "Melbourne"}, {"name"=> "Melbourne"})
@@ -46,7 +47,7 @@ describe 'App' do
   end
 
   def stub_jigsaw_request response_body
-    stub_request(:get, "https://jigsaw.thoughtworks.com/api/people/people?page=1&role=Dev").
+    stub_request(:get, "https://jigsaw.thoughtworks.com/api/people?page=1&role=Dev").
     with(:headers => {'Authorization'=> ENV['JIGSAW_API_TOKEN']}).
     to_return(:status => 200, :body => response_body, :headers => {})
   end
