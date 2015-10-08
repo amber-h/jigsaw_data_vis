@@ -11,4 +11,8 @@ class ThoughtWorker
 		@workingOffice = workingOffice
 	end
 
+	def is_female?
+		self.gender == "Female"
+	end
+
 end
