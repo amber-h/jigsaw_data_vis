@@ -2,6 +2,7 @@ require 'rest-client'
 require 'dotenv'
 require 'json'
 require_relative 'thoughtworker'
+require 'pry'
 
 class Jigsaw
 
@@ -12,12 +13,18 @@ class Jigsaw
   		@jigsaw = get_jigsaw_resource 
 	end
 
-	def get_people_by_role role, pages
+	def get_people_by_role role
+		#use headers
 		thoughtworkers = Array.new
-		for page in 1..pages.to_i
+		page = 1
+		loop do
 			jigsaw_json = @jigsaw["people?role=#{role}&page=#{page}"].get
+			break if JSON.parse(jigsaw_json).empty?
+			# binding.pry
+
 			thoughtworker_array = parse_json_to_thoughtworker(jigsaw_json)
-			(thoughtworkers << thoughtworker_array).flatten!
+			thoughtworkers = thoughtworkers + thoughtworker_array
+			page += 1 
 		end
 
 		thoughtworkers
@@ -32,12 +39,9 @@ class Jigsaw
 	def parse_json_to_thoughtworker data
 		thoughtworkers = Array.new
 		JSON.parse(data).each do |d|
-			thoughtworker = ThoughtWorker.new(d["employeeId"], d["gender"], d["role"], d["grade"], d["twExperience"], d["homeOffice"], d["workingOffice"])
-			thoughtworkers << thoughtworker
+			thoughtworkers << ThoughtWorker.new(d["employeeId"], d["gender"], d["role"], d["grade"], d["twExperience"], d["homeOffice"], d["workingOffice"])
 		end
 
 		thoughtworkers
 	end
-
-
 end
