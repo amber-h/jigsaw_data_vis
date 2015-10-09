@@ -17,15 +17,14 @@ class Jigsaw
 		#use headers
 		thoughtworkers = Array.new
 		page = 1
-		loop do
+		# loop do
 			jigsaw_json = @jigsaw["people?role=#{role}&page=#{page}"].get
-			break if JSON.parse(jigsaw_json).empty?
-			# binding.pry
+			# break if JSON.parse(jigsaw_json).empty?
 
 			thoughtworker_array = parse_json_to_thoughtworker(jigsaw_json)
 			thoughtworkers = thoughtworkers + thoughtworker_array
 			page += 1 
-		end
+		# end
 
 		thoughtworkers
 	end

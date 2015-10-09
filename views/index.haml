@@ -1,7 +1,24 @@
 %html
   %head
-    %title Hello World!
+    %title Jigsaw Visualizations
+
+    %link{:rel=> :stylesheet, :type => :"text/css", :href=> "/css/style.css"}
+    %link{:rel => :stylesheet, :type => :"text/css", :href =>"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"}
+    %link{:rel => :stylesheet, :type => :"text/css", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"}
+    %link{:rel=>:stylesheet, :href => "http://fonts.googleapis.com/css?family=Montserrat:400,700", :type=>"text/css"}
+    %link{:href=>"http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic", :rel=>:stylesheet, :type=>:"text/css"}
+    %link{:rel=>:stylesheet, :href=>"https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"}
+    %script{:src=>"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"}]
+    %script{:src=>"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"}
+
+    %meta{:name=>"viewport", :content=>"width=device-width, initial-scale=1"}
+
   %body
-    %h1 Basic Sinatra App!
-    %h2 Jigsaw People Data: female ratio
-    #{@female_ratio}
+    %nav.navbar#override.navbar-default.navbar-fixed-top
+      .container
+        %h1.nav-title Jigsaw Visualizations
+    .container
+      %h2 Percentage of Women by Role - All ThoughtWorks
+      %h5 Dev: #{@female_dev_ratio}
+      %h5 BA: #{@female_ba_ratio}
+      %h5 QA: #{@female_qa_ratio}

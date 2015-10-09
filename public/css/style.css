@@ -1,0 +1,7 @@
+body { padding-top: 70px; }
+
+#override.navbar-default {
+	background-image: none;
+	border-color: rgba(3,151,179,0.62);
+	background-color: rgba(3,151,179,0.62);
+}
