@@ -5,3 +5,9 @@ body { padding-top: 70px; }
 	border-color: rgba(3,151,179,0.62);
 	background-color: rgba(3,151,179,0.62);
 }
+
+#map-container {
+	position: relative;
+	width: 1200px; 
+	height: 600px;
+}
