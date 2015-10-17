@@ -1,3 +1,5 @@
+require_relative "../models/countries"
+
 class ThoughtWorker
 	attr_accessor :employeeId, :gender, :role, :grade, :twExperience, :homeOffice, :workingOffice
 	
@@ -21,6 +23,22 @@ class ThoughtWorker
 
 	def is_grade? grade_level
 		self.grade["name"] == grade_level
+	end
+
+	def is_home_office? home_office
+		self.homeOffice["name"] == home_office
+	end
+
+	def is_country? country
+		Countries.new.countries[country].include? self.homeOffice["name"]
+	end
+
+	def is_role? role
+		self.role["name"] == role
+	end
+
+	def is_gender? gender
+		self.gender == gender
 	end
 
 end
