@@ -8,6 +8,9 @@ gem 'haml'
 gem 'dotenv'
 gem 'json'
 
+gem "sinatra-activerecord"
+gem "pg"
+
 group :test do 
 	gem 'rspec', '~> 3.3.0'
 	gem 'webmock', '~> 1.21.0'

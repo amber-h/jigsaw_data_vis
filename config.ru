@@ -1,5 +1,5 @@
-require './app'
+require './app_new'
 
 map '/' do
-	run JigsawVis
+	run JigsawVisNew
 end

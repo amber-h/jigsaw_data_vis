@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: jigsaw
+  username: jigsaw
+  password: jigsaw
+  host: localhost
