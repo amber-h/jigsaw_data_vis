@@ -14,7 +14,6 @@ class JigsawVisNew < Sinatra::Base
          puts @thoughtworkers
 
    		@female_dev_ratio = StatCalculator.ratio @thoughtworkers, "Dev", "Female"
-         puts @female_dev_ratio
    		@female_ba_ratio = StatCalculator.ratio @thoughtworkers, "BA", "Female"
    		@female_qa_ratio = StatCalculator.ratio @thoughtworkers, "QA", "Female"
    		
