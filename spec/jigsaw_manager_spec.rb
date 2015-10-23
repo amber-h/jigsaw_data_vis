@@ -22,7 +22,7 @@ describe 'Jigsaw' do
 
 				actualResponse = @jigsaw.get_people_by_role "Dev"
 
-        expect(actualResponse[0]) == ThoughtWorker.new("15733", "Male", {"name" => "Dev"}, {"name"=> "Con"}, 1.96, {"name"=> "Melbourne"}, {"name"=> "Melbourne"})
+        expect(actualResponse[0]) == Thoughtworker.new("15733", "Male", {"name" => "Dev"}, {"name"=> "Con"}, 1.96, {"name"=> "Melbourne"}, {"name"=> "Melbourne"})
       end
 
       
@@ -35,8 +35,8 @@ describe 'Jigsaw' do
         actualResponse = @jigsaw.get_people_by_role "Dev"
 
         expect(actualResponse.length).to eq(2)
-        expect(actualResponse[0]) == ThoughtWorker.new("33333", "Female", {"name" => "Dev"}, {"name"=> "Con"}, 1.96, {"name"=> "Melbourne"}, {"name"=> "Melbourne"})
-        expect(actualResponse[1]) == ThoughtWorker.new("17813", "Male", {"name" => "Dev"}, {"name"=> "Intern"}, 0.24, {"name"=> "Bangalore"}, {"name"=> "Bangalore"})
+        expect(actualResponse[0]) == Thoughtworker.new("33333", "Female", {"name" => "Dev"}, {"name"=> "Con"}, 1.96, {"name"=> "Melbourne"}, {"name"=> "Melbourne"})
+        expect(actualResponse[1]) == Thoughtworker.new("17813", "Male", {"name" => "Dev"}, {"name"=> "Intern"}, 0.24, {"name"=> "Bangalore"}, {"name"=> "Bangalore"})
       end
     end
 	end

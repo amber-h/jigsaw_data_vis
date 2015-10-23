@@ -2,8 +2,8 @@ require 'sinatra/activerecord'
 
 class CreateThoughtworker < ActiveRecord::Migration
   def up
-  	create_table :thoughtworker do |t|
-  		t.string :employeeId
+  	create_table :thoughtworkers do |t|
+  	t.string :employeeId
 		t.string :gender
 		t.string :role
 		t.string :grade
@@ -14,6 +14,6 @@ class CreateThoughtworker < ActiveRecord::Migration
   end
 
   def down
-  	drop_table :thoughtworker
+  	drop_table :thoughtworkers
   end
 end

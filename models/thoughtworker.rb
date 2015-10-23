@@ -1,8 +1,7 @@
 require_relative "../models/countries"
-require_relative '../config/environments'
 require 'sinatra/activerecord'
 
-class ThoughtWorker < ActiveRecord::Base
+class Thoughtworker < ActiveRecord::Base
 
 	attr_accessor :employeeId, :gender, :role, :grade, :twExperience, :homeOffice, :workingOffice
 	

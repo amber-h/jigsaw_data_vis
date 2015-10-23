@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20151017233755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "thoughtworker", force: :cascade do |t|
+  create_table "thoughtworkers", force: :cascade do |t|
     t.string  "employeeId"
     t.string  "gender"
     t.string  "role"

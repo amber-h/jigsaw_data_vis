@@ -13,18 +13,23 @@ class Jigsaw
   		@jigsaw = get_jigsaw_resource 
 	end
 
+	# def get_people_by_role role
+	# 	thoughtworkers = parse_json_to_thoughtworker(File.read(File.dirname(__FILE__), "jigsaw.json"))
+	# 	thoughtworkers.select { |t| t.role == "{ name : #{role} }"}
+	# end
+
+
 	def get_people_by_role role
-		#use headers
 		thoughtworkers = Array.new
 		page = 1
-		# loop do
+		loop do
 			jigsaw_json = @jigsaw["people?role=#{role}&page=#{page}"].get
-			# break if JSON.parse(jigsaw_json).empty?
+			break if JSON.parse(jigsaw_json).empty?
 
 			thoughtworker_array = parse_json_to_thoughtworker(jigsaw_json)
 			thoughtworkers = thoughtworkers + thoughtworker_array
 			page += 1 
-		# end
+		end
 
 		thoughtworkers
 	end
@@ -38,7 +43,7 @@ class Jigsaw
 	def parse_json_to_thoughtworker data
 		thoughtworkers = Array.new
 		JSON.parse(data).each do |d|
-			thoughtworkers << ThoughtWorker.new(d["employeeId"], d["gender"], d["role"], d["grade"], d["twExperience"], d["homeOffice"], d["workingOffice"])
+			thoughtworkers << Thoughtworker.new(d["employeeId"], d["gender"], d["role"], d["grade"], d["twExperience"], d["homeOffice"], d["workingOffice"])
 		end
 
 		thoughtworkers
